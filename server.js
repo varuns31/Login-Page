@@ -6,7 +6,7 @@ const users=[]
 app.use(express.urlencoded({extended:false}))
 
 app.get('/',(req,res)=>{
-  res.render('index.ejs',{ status: 'Varun'})
+  res.render('index.ejs',{ status: 'Varun' , name: 'Shubham'})
 })
 app.get('/login',(req,res)=>{
   res.render('login.ejs',{ status: 'Varun'})
@@ -27,10 +27,11 @@ app.post('/register',async(req,res)=>{
         email:req.body.email,
         password:hashedpassword
       })
-      res.redirect('/login')
+    res.redirect('/login') 
   }catch{
-    
+      res.redirect('/register') 
   }
+    console.log(users)
 })
 
 app.listen(3000)
